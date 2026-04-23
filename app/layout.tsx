@@ -8,17 +8,21 @@ import { CartProvider } from "@/context/CartContext";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
+  display: "swap",
+  fallback: ["serif"],
   variable: "--font-playfair",
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
+  display: "swap",
+  fallback: ["sans-serif"],
   variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
-  title: "Calvexa Home Living | Premium Household Essentials",
-  description: "Discover beautifully crafted, functional household items designed to turn your house into a home you love.",
+  title: "Educraft Academy | Master the Skills of Tomorrow, Today.",
+  description: "Join Educraft Academy and unlock high-quality, on-demand digital courses designed by industry experts.",
 };
 
 export default function RootLayout({
@@ -28,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="bg-brand-dark text-white antialiased">
+      <body className="bg-brand-dark text-white antialiased" suppressHydrationWarning>
         <CartProvider>
           <Navbar />
           {children}

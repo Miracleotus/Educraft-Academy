@@ -1,38 +1,44 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ChefHat, Sofa, Bed } from "lucide-react";
+import { ArrowRight, Code, LineChart, Database, Palette, Star } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
 const categories = [
   {
-    icon: <ChefHat size={28} />,
-    title: "Kitchenware",
-    desc: "Cook and dine with elegance.",
+    icon: <Code size={28} />,
+    title: "Web Development",
+    desc: "Build modern, responsive websites and applications.",
   },
   {
-    icon: <Sofa size={28} />,
-    title: "Living Room & Decor",
-    desc: "Add character and cozy comforts.",
+    icon: <LineChart size={28} />,
+    title: "Digital Marketing",
+    desc: "Master SEO, social media, and paid advertising strategies.",
   },
   {
-    icon: <Bed size={28} />,
-    title: "Bed & Bath",
-    desc: "Transform your private spaces into luxurious sanctuaries.",
+    icon: <Database size={28} />,
+    title: "Data Science",
+    desc: "Learn to analyze data and build machine learning models.",
+  },
+  {
+    icon: <Palette size={28} />,
+    title: "UI/UX Design",
+    desc: "Design intuitive and beautiful user experiences.",
   },
 ];
 
 const whyChooseUs = [
-  { title: "Premium Quality", desc: "We source only the finest, most durable materials for products built to last." },
-  { title: "Modern Design", desc: "Thoughtfully designed pieces that elevate your interior styling." },
-  { title: "Exceptional Value", desc: "Luxury living essentials without the luxury markup." },
+  { title: "Expert Instructors", desc: "Learn directly from professionals who work in the field." },
+  { title: "Lifetime Access", desc: "Pay once and revisit the material whenever you need a refresher." },
+  { title: "Project-Based Learning", desc: "Don't just watch videos—build real-world portfolios." },
+  { title: "Community Support", desc: "Join a private network of thousands of ambitious learners." },
 ];
 
 const process = [
-  { step: "1", title: "Browse & Inspire", desc: "Explore our curated collections to find the perfect pieces for your aesthetic." },
-  { step: "2", title: "Secure Checkout", desc: "Order with confidence using our safe, encrypted payment portal." },
-  { step: "3", title: "Fast Delivery", desc: "We pack your items with care and ship them swiftly to your doorstep." },
-  { step: "4", title: "Enjoy Your Space", desc: "Unbox, decorate, and fall in love with your newly refreshed home." },
+  { step: "1", title: "Enroll", desc: "Browse our catalog and secure your spot in seconds." },
+  { step: "2", title: "Learn", desc: "Access high-definition video lessons and downloadable resources." },
+  { step: "3", title: "Build", desc: "Complete hands-on assignments to test your knowledge." },
+  { step: "4", title: "Certify", desc: "Earn a verified certificate to showcase on your resume and LinkedIn." },
 ];
 
 const fadeInUp: Variants = {
@@ -66,7 +72,7 @@ export default function HomePage() {
     <main className="bg-brand-dark text-white font-body">
 
       {/* HERO */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative overflow-hidden">
+      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-24 text-center">
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: "radial-gradient(ellipse at center, rgba(201, 169, 97, 0.12) 0%, transparent 70%)" }} />
         <motion.div
@@ -76,17 +82,22 @@ export default function HomePage() {
           className="relative z-10 flex flex-col items-center"
         >
           <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6 max-w-4xl">
-            Elevate Your Everyday Living.
+            Master the Skills of Tomorrow, Today.
           </h1>
           <p className="text-brand-gray max-w-2xl text-lg mb-10 leading-relaxed">
-            Discover beautifully crafted, functional household items designed to turn your house into a home you love.
+            Join Educraft Academy and unlock high-quality, on-demand digital courses designed by industry experts. Elevate your career at your own pace.
           </p>
-          <Link
-            href="/shop"
-            className="bg-brand-teal text-brand-dark px-8 py-4 font-bold tracking-widest uppercase text-sm hover:bg-brand-teal-light transition-all inline-flex items-center gap-2 rounded-full"
-          >
-            Shop the Collection <ArrowRight size={16} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            <Link
+              href="/courses"
+              className="bg-brand-teal text-brand-dark px-8 py-4 font-bold tracking-widest uppercase text-sm hover:bg-brand-teal-light transition-all inline-flex items-center gap-2 rounded-full"
+            >
+              Explore Courses <ArrowRight size={16} />
+            </Link>
+            <Link href="/courses" className="text-brand-teal hover:text-white transition-colors font-bold uppercase tracking-widest text-sm underline-offset-4 hover:underline">
+              Start Learning for Free
+            </Link>
+          </div>
         </motion.div>
       </section>
 
@@ -99,10 +110,10 @@ export default function HomePage() {
         className="max-w-4xl mx-auto px-6 py-24 text-center"
       >
         <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-          Welcome to Calvexa Home Living
+          Education Crafted for the Digital Age.
         </h2>
         <p className="text-brand-gray text-lg leading-relaxed">
-          We believe that the environment you live in shapes the way you feel. That is why Calvexa is dedicated to curating premium household items that blend modern aesthetics with everyday practicality. From the kitchen where you create memories to the bedroom where you recharge, we bring warmth, style, and quality to every corner of your home.
+          At Educraft Academy, we believe that traditional education isn&apos;t moving fast enough. We bridge the gap between ambition and achievement by offering up-to-date, practical digital courses. Whether you are pivoting to a new career in tech, scaling your business, or picking up a new creative skill, our platform provides the tools you need to succeed.
         </p>
       </motion.section>
 
@@ -116,10 +127,10 @@ export default function HomePage() {
             variants={fadeInUp}
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold text-center mb-6">
-              Explore Your Home's Potential
+              Find Your Perfect Path
             </h2>
             <p className="text-brand-gray text-center mb-16 text-lg">
-              Find exactly what you need to refresh your space.
+              Dive into our comprehensive libraries covering Web Development, Digital Marketing, Data Science, and UI/UX Design. Each category is packed with actionable insights and hands-on projects.
             </p>
           </motion.div>
           <motion.div 
@@ -127,7 +138,7 @@ export default function HomePage() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid md:grid-cols-3 gap-6"
+            className="grid sm:grid-cols-2 md:grid-cols-4 gap-6"
           >
             {categories.map((c) => (
               <motion.div
@@ -155,14 +166,14 @@ export default function HomePage() {
           variants={fadeInUp}
           className="font-display text-4xl font-bold text-center mb-16"
         >
-          The <span className="text-brand-teal">Calvexa Standard</span>
+          Why Learn with <span className="text-brand-teal">Educraft?</span>
         </motion.h2>
         <motion.div 
           variants={staggerContainer}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid md:grid-cols-3 gap-8 text-center"
+          className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-center"
         >
           {whyChooseUs.map((item) => (
             <motion.div variants={staggerItem} key={item.title} className="flex flex-col items-center gap-4">
@@ -183,7 +194,7 @@ export default function HomePage() {
             variants={fadeInUp}
             className="font-display text-4xl font-bold text-center mb-16"
           >
-            How Calvexa Works
+            How It Works
           </motion.h2>
           <motion.div 
             variants={staggerContainer}
@@ -207,6 +218,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="max-w-4xl mx-auto px-6 py-24 text-center">
+        <motion.div
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeInUp}
+        >
+          <h2 className="font-display text-4xl font-bold mb-10">
+            Don&apos;t Just Take Our Word For It.
+          </h2>
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-10 md:p-14 relative overflow-hidden">
+            <Star className="text-brand-teal absolute top-8 left-8 opacity-20" size={64} />
+            <p className="text-xl md:text-2xl font-light italic leading-relaxed mb-8 relative z-10">
+              &quot;Educraft Academy&apos;s UX Design course gave me the portfolio I needed to land my first junior designer role. The feedback was incredible.&quot;
+            </p>
+            <div className="font-bold text-brand-teal tracking-widest uppercase text-sm">— Sarah T., Product Designer</div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* FINAL CTA */}
       <motion.section 
         initial="initial"
@@ -216,16 +248,16 @@ export default function HomePage() {
         className="py-32 px-6 text-center"
       >
         <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
-          Ready to Refresh Your Space?
+          Ready to Craft Your Future?
         </h2>
         <p className="text-brand-gray max-w-xl mx-auto mb-10 text-lg">
-          Join thousands of happy homeowners who have transformed their spaces with Calvexa.
+          Join over 50,000 students worldwide who are taking control of their careers.
         </p>
         <Link
-          href="/shop"
+          href="/courses"
           className="bg-brand-teal text-brand-dark px-10 py-4 uppercase tracking-widest text-sm font-bold hover:bg-brand-teal-light transition-all inline-block rounded-full"
         >
-          View Best Sellers
+          Browse All Courses Now
         </Link>
       </motion.section>
 

@@ -16,30 +16,21 @@ export default function PrivacyPage() {
         </h1>
 
         <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">1. Introduction</h2>
           <p className="text-brand-gray text-lg leading-relaxed">
-            Welcome to Calvexa Home Living. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website.
+            <strong>Last Updated: March 2026</strong>
+          </p>
+          <p className="text-brand-gray text-lg leading-relaxed mt-4">
+            At Educraft Academy, we take your privacy seriously. This policy explains how we collect, use, and protect your personal data when you visit our website or purchase our digital courses.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">2. Data We Collect</h2>
+          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">Information Collection & Use</h2>
           <p className="text-brand-gray text-lg leading-relaxed">
-            We may collect, use, store, and transfer different kinds of personal data about you, including Identity Data (name, username), Contact Data (billing address, delivery address, email), Financial Data (payment card details), and Transaction Data (details about payments to and from you).
+            We collect information you provide directly to us (such as name and email when creating an account) and automatically collect standard analytics data (like browser type and IP address) to improve our services.
           </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">3. How We Use Your Data</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            We will only use your personal data when the law allows us to. Most commonly, we use your data to process and deliver your order, manage our relationship with you, and improve our website, products, and marketing.
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="font-display text-2xl font-bold mb-4 text-brand-teal">4. Data Security</h2>
-          <p className="text-brand-gray text-lg leading-relaxed">
-            We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorized way.
+          <p className="text-brand-gray text-lg leading-relaxed mt-4">
+            We do not sell your personal data to third parties. We use industry-standard encryption to protect your payment information during checkout.
           </p>
         </section>
       </motion.div>

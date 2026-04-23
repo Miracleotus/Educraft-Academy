@@ -1,91 +1,69 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import Link from "next/link";
 import { products } from "@/lib/products";
 import { formatPrice } from "@/lib/utils";
+import { GraduationCap, ArrowLeft, ShoppingCart } from "lucide-react";
+import { motion } from "framer-motion";
+import { notFound } from "next/navigation";
 import { useCart } from "@/context/CartContext";
-import Link from "next/link";
-import { ArrowLeft, ShoppingCart } from "lucide-react";
+import { use } from "react";
 
-export default function ProductPage() {
-  const params = useParams();
-  const productId = params.id as string;
-  const product = products.find(p => p.id === productId);
-  const { addToCart } = useCart();
+export default function CourseDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
+  const course = products.find((p) => p.id === id);
+  const cart = useCart(); 
 
-  if (!product) {
-    return (
-      <main className="max-w-4xl mx-auto px-4 py-12">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Product Not Found</h1>
-          <p className="text-white/60 mb-8">The product you're looking for doesn't exist.</p>
-          <Link
-            href="/shop"
-            className="bg-brand-teal text-brand-dark px-6 py-3 font-semibold rounded-full hover:bg-brand-teal-light transition"
-          >
-            Back to Shop
-          </Link>
-        </div>
-      </main>
-    );
+  if (!course) {
+    return notFound();
   }
 
-  const handleAddToCart = () => {
-    addToCart(product);
-  };
-
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12">
-      <Link
-        href="/shop"
-        className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-8 transition"
-      >
-        <ArrowLeft size={16} />
-        Back to Shop
+    <main className="max-w-7xl mx-auto px-6 py-32 min-h-screen font-body">
+      <Link href="/courses" className="text-brand-gray hover:text-brand-teal transition-colors inline-flex items-center gap-2 mb-12 uppercase tracking-widest text-xs font-bold">
+        <ArrowLeft size={16} /> Back to Courses
       </Link>
 
-      <div className="grid md:grid-cols-2 gap-12">
-        {/* Product Image Placeholder */}
-        <div className="aspect-square bg-white/5 rounded-2xl flex items-center justify-center">
-          <div className="text-white/40 text-center">
-            <div className="w-24 h-24 bg-brand-teal/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ShoppingCart size={32} />
-            </div>
-            <p>Product Image</p>
-          </div>
-        </div>
+      <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        {/* Visual/Image Section */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="bg-white/5 border border-white/10 rounded-3xl aspect-square flex flex-col items-center justify-center relative overflow-hidden group"
+        >
+          <div className="absolute inset-0 bg-brand-teal/5 group-hover:bg-brand-teal/10 transition-colors" />
+          <GraduationCap size={120} className="text-brand-teal/40 group-hover:text-brand-teal transition-all duration-500 scale-100 group-hover:scale-110" />
+        </motion.div>
 
-        {/* Product Details */}
-        <div className="space-y-6">
-          <div>
-            <span className="text-xs text-brand-teal uppercase tracking-widest">{product.category}</span>
-            <h1 className="text-3xl font-bold mt-2 mb-4">{product.name}</h1>
-            <p className="text-white/60">{product.shortDesc}</p>
-          </div>
-
-          <div className="text-4xl font-bold text-brand-teal">
-            {formatPrice(product.price)}
-          </div>
-
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Description</h2>
-            <p className="text-white/80 leading-relaxed">{product.fullDesc}</p>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-sm text-white/60">
-              <span className="font-semibold">SKU:</span> {product.sku}
-            </p>
+        {/* Details Section */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col justify-center"
+        >
+          <span className="text-sm font-bold text-brand-teal uppercase tracking-widest mb-4 block">
+            {course.category}
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">
+            {course.name}
+          </h1>
+          <p className="text-brand-gray text-lg leading-relaxed mb-8">
+            {course.shortDesc}
+          </p>
+          
+          <div className="text-3xl font-bold text-white mb-10">
+            {formatPrice(course.price)}
           </div>
 
-          <button
-            onClick={handleAddToCart}
-            className="w-full bg-brand-teal text-brand-dark py-4 font-bold rounded-full hover:bg-brand-teal-light transition flex items-center justify-center gap-2"
-          >
-            <ShoppingCart size={20} />
-            Add to Cart
-          </button>
-        </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={() => cart.addToCart(course)}
+              className="bg-brand-teal text-brand-dark px-8 py-4 font-bold tracking-widest uppercase text-sm hover:bg-brand-teal-light transition-all flex items-center justify-center gap-3 rounded-full grow"
+            >
+              <ShoppingCart size={18} /> Add to Cart
+            </button>
+          </div>
+        </motion.div>
       </div>
     </main>
   );
